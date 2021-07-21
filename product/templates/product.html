@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block contents %}
+
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">가격</th>
+                    <th scope="col">등록날짜</th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+                {% for product in product_list %}
+                <tr>
+                    <td scope="col">{{ product.id }}</td>
+                    <td scope="col"><a href="/product/{{ product.id }}">{{ product.name }}</a></td>
+                    <td scope="col">{{ product.price|intcomma }}원</td> <!--humanize를 통해 세자리수마다 컴마를 찍어줌(django builtin filter) -->
+                    <td scope="col">{{ product.register_date|date:'Y-m-d H:i' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

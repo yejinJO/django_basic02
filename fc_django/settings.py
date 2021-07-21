@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'fcuser',
     'order',
     'product',
@@ -58,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
+        'APP_DIRS': True, # True로 되어있으면 templates를 찾는데 모든 앱의 templates를 찾아보겠다는 의미, base는 첫번째 app의 template이며, fcuser를 제외한 order와 product 앱에서의 base.html은 삭제해도 무방함
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

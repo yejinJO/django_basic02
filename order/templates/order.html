@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block contents %}
+
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">수량</th>
+                    <th scope="col">주문날짜</th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+                {% for order in order_list %}
+                <tr>
+                    <td scope="col">{{ order.id }}</td>
+                    <td scope="col">{{ order.product}}</td>
+                    <td scope="col">{{ order.quantity|intcomma }}개</td> <!--humanize를 통해 세자리수마다 컴마를 찍어줌(django builtin filter) -->
+                    <td scope="col">{{ order.register_date|date:'Y-m-d H:i' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
